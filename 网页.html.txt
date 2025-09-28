@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一个小游戏 - 猜数字</title>
+    <!-- 链接到样式文件 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>猜数字游戏</h1>
+        <p>我已经想好了一个 1 到 100 之间的数字。你能猜出来吗？</p>
+        
+        <input type="number" id="guessInput" placeholder="输入你的猜测...">
+        <button onclick="checkGuess()">提交猜测</button>
+        
+        <p id="message"></p>
+        <p>你已经猜了：<span id="attempts">0</span> 次</p>
+    </div>
+
+    <!-- 链接到JavaScript逻辑文件 -->
+    <script src="script.js"></script>
+</body>
+</html>

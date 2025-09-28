@@ -1,0 +1,47 @@
+// 1. 生成一个1-100的随机数
+let secretNumber = Math.floor(Math.random() * 100) + 1;
+// 2. 记录猜测次数
+let attempts = 0;
+
+// 主要的判断函数
+function checkGuess() {
+    // 3. 获取玩家输入的数字
+    const guess = parseInt(document.getElementById('guessInput').value);
+    // 4. 获取用于显示提示信息的段落
+    const messageElement = document.getElementById('message');
+    // 5. 获取用于显示猜测次数的元素
+    const attemptsElement = document.getElementById('attempts');
+
+    // 6. 判断输入是否有效
+    if (isNaN(guess) || guess < 1 || guess > 100) {
+        messageElement.textContent = "请输入一个 1 到 100 之间的有效数字！";
+        messageElement.style.color = "red";
+        return; // 结束函数
+    }
+
+    // 7. 猜测次数+1
+    attempts++;
+    attemptsElement.textContent = attempts;
+
+    // 8. 判断猜测结果
+    if (guess === secretNumber) {
+        // 猜对了
+        messageElement.textContent = `恭喜你！猜对了！答案就是 ${secretNumber}。你用了 ${attempts} 次。`;
+        messageElement.style.color = "green";
+        // 禁用输入框和按钮，游戏结束
+        document.getElementById('guessInput').disabled = true;
+        document.querySelector('button').disabled = true;
+    } else if (guess < secretNumber) {
+        // 猜小了
+        messageElement.textContent = "猜小了，再试试！";
+        messageElement.style.color = "orange";
+    } else {
+        // 猜大了
+        messageElement.textContent = "猜大了，再试试！";
+        messageElement.style.color = "orange";
+    }
+
+    // 9. 清空输入框并聚焦，方便下次输入
+    document.getElementById('guessInput').value = '';
+    document.getElementById('guessInput').focus();
+}
